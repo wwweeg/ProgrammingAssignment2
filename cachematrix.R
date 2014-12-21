@@ -35,8 +35,8 @@ makeCacheMatrix <- function(x = matrix()) {
 	#if cacheSolve() has not been called yet, inv1 == NULL
 	#when cacheSolve() is 1st called, inv1 is cached == inverse of matrix x
 		#b/c data is set == x via call to get()
-	    #then inv2 is set == solve(data)
-	    #then inv1 is set == inv2 via call to q$setinv(inv2)
+		#then inv2 is set == solve(data)
+		#then inv1 is set == inv2 via call to q$setinv(inv2)
 	getinv <- function() {inv1}
 	
 	#putting this last returns these functions, making them callable
