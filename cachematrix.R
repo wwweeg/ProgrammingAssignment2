@@ -5,7 +5,7 @@
 ## Together, they allow you to nominate a matrix x to be analyzed (as
 ## input to (1)); and then to compute & cache the solution to the matrix's
 ## inverse (via a call to (2)). Once (2) has been called, as long
-## as x remains unchanged, subsequent calls to (2) will retrieve the
+## as is not called again, subsequent calls to (2) will retrieve the
 ## cached solution rather than recomputing it. (2) will return an error
 ## if x is not a square matrix.
 
@@ -20,7 +20,7 @@ makeCacheMatrix <- function(x = matrix()) {
 	#assignment...but it allows you to set x via a call to the set()
 	#command [e.g., if you do a<-makeCacheMatrix(matrix(1:4, 2, 2),
 	#then you could redefine x as matrix(i:j, n, n) by simply calling
-	#a$set(matrix(1:16, 4, 4)] rather than calling makeCacheMatrix again.
+	#a$set(matrix(i:j, n, n)] rather than calling makeCacheMatrix again.
 	set <- function(y) {
 		x <<- y
 		inv1 <<- NULL
@@ -51,7 +51,6 @@ makeCacheMatrix <- function(x = matrix()) {
 ## caches this value. Subsequent calls to cacheSolve() will return
 ## cached solution (unless makeCacheMatrix() is called again, which
 ## starts the process over because the cache gets redefined as NULL).
-
 cacheSolve <- function(q, ...) {
     ## Return a matrix that is the inverse of 'x'
     
