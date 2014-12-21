@@ -25,24 +25,24 @@ makeCacheMatrix <- function(x = matrix()) {
 		x <<- y
 		inv1 <<- NULL
 	}
-    #get is a function that merely returns matrix x (as defined in args)
-    get <- function() {x}
-    
-    #setinv takes input z (aka inv2, in cacheSolve()) and sets inv1 == z
-    setinv <- function(z) {inv1 <<- z}
-    
-    #getinv is a function that returns inv1
-    #if cacheSolve() has not been called yet, inv1 == NULL
-    #when cacheSolve() is 1st called, inv1 is cached == inverse of matrix x
-    	#b/c data is set == x via call to get()
-        #then inv2 is set == solve(data)
-        #then inv1 is set == inv2 via call to q$setinv(inv2)
-    getinv <- function() {inv1}
-    
-    #putting this last returns these functions, making them callable
-    #the XYZ=XYZ syntax seems to be required in order that they
-    #be interpreted as function objects
-    list(set=set, get=get, setinv=setinv, getinv=getinv)
+	#get is a function that merely returns matrix x (as defined in args)
+	get <- function() {x}
+	
+	#setinv takes input z (aka inv2, in cacheSolve()) and sets inv1 == z
+	setinv <- function(z) {inv1 <<- z}
+	
+	#getinv is a function that returns inv1
+	#if cacheSolve() has not been called yet, inv1 == NULL
+	#when cacheSolve() is 1st called, inv1 is cached == inverse of matrix x
+		#b/c data is set == x via call to get()
+	    #then inv2 is set == solve(data)
+	    #then inv1 is set == inv2 via call to q$setinv(inv2)
+	getinv <- function() {inv1}
+	
+	#putting this last returns these functions, making them callable
+	#the XYZ=XYZ syntax seems to be required in order that they
+	#be interpreted as function objects
+	list(set=set, get=get, setinv=setinv, getinv=getinv)
 }
 
 
@@ -51,9 +51,10 @@ makeCacheMatrix <- function(x = matrix()) {
 ## caches this value. Subsequent calls to cacheSolve() will return
 ## cached solution (unless makeCacheMatrix() is called again, which
 ## starts the process over because the cache gets redefined as NULL).
+
 cacheSolve <- function(q, ...) {
-    ## Return a matrix that is the inverse of 'x'
-    
+	## Return a matrix that is the inverse of 'x'
+	
 	#set inv2 == inv1 (will == NULL 1st time cacheSolve() is called)
 	inv2 <- q$getinv()
 	
