@@ -51,10 +51,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## caches this value. Subsequent calls to cacheSolve() will return
 ## cached solution (unless makeCacheMatrix() is called again, which
 ## starts the process over because the cache gets redefined as NULL).
-
 cacheSolve <- function(q, ...) {
-	## Return a matrix that is the inverse of 'x'
-	
 	#set inv2 == inv1 (will == NULL 1st time cacheSolve() is called)
 	inv2 <- q$getinv()
 	
